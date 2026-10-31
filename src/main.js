@@ -18,7 +18,22 @@ const elements = {
   mergeButton: document.querySelector("#merge-button"),
   actionHint: document.querySelector("#action-hint"),
   status: document.querySelector("#status"),
+  themeToggle: document.querySelector("#theme-toggle"),
 };
+
+function syncThemeToggle() {
+  const isDark = document.documentElement.classList.contains("dark");
+  elements.themeToggle.setAttribute("aria-pressed", String(isDark));
+  elements.themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+}
+
+elements.themeToggle.addEventListener("click", () => {
+  const isDark = document.documentElement.classList.toggle("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  syncThemeToggle();
+});
+
+syncThemeToggle();
 
 worker.addEventListener("message", (event) => {
   const message = event.data;
