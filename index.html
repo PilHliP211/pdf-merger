@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Combine PDF files privately in your browser. Nothing is uploaded."
+    />
+    <meta name="theme-color" content="#f4f0e8" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>Merge PDFs - Phillip Byram</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Phillip Byram home">
+        <span class="wordmark-mark" aria-hidden="true">PB</span>
+        <span>phillip.byram.dev</span>
+      </a>
+      <span class="header-label">A small, private utility</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="eyebrow"><span></span> Browser-only PDF tool</div>
+        <h1 id="page-title">Put your PDFs<br /><em>in one place.</em></h1>
+        <p class="hero-copy">
+          Combine two or more PDFs into a single document. Your files stay on
+          your device - no uploads, accounts, or waiting rooms.
+        </p>
+
+        <div class="privacy-note" aria-label="Privacy information">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3 5 6v5c0 4.8 2.8 8.3 7 10 4.2-1.7 7-5.2 7-10V6l-7-3Z" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
+          <span><strong>Private by design.</strong> Processing happens locally in your browser.</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-labelledby="workspace-title">
+        <div class="workspace-heading">
+          <div>
+            <span class="step">01</span>
+            <h2 id="workspace-title">Choose your PDFs</h2>
+          </div>
+          <span id="file-summary" class="file-summary">No files yet</span>
+        </div>
+
+        <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-describedby="drop-help">
+          <input id="file-input" type="file" accept="application/pdf,.pdf" multiple hidden />
+          <div class="drop-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" />
+            </svg>
+          </div>
+          <p><strong>Drop PDFs here</strong> or <span>choose files</span></p>
+          <small id="drop-help">Select at least two files. You can reorder them before merging.</small>
+        </div>
+
+        <div id="file-list-wrap" class="file-list-wrap" hidden>
+          <div class="list-labels" aria-hidden="true">
+            <span>Document order</span>
+            <span>Drag to rearrange</span>
+          </div>
+          <ol id="file-list" class="file-list" aria-label="PDF merge order"></ol>
+          <button id="add-more" class="add-more" type="button">
+            <span aria-hidden="true">+</span> Add more PDFs
+          </button>
+        </div>
+
+        <div id="size-warning" class="size-warning" hidden>
+          Large files can use several times their size in browser memory. Keep this tab open while they merge.
+        </div>
+
+        <div class="action-row">
+          <div class="action-copy">
+            <span class="step">02</span>
+            <div>
+              <h2>Make one document</h2>
+              <p id="action-hint">Add at least two PDFs to continue.</p>
+            </div>
+          </div>
+          <button id="merge-button" class="merge-button" type="button" disabled>
+            <span class="button-label">Merge &amp; download</span>
+            <span class="button-progress" aria-hidden="true"></span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5M5 20h14" />
+            </svg>
+          </button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="fine-print" aria-label="Technical notes">
+        <div>
+          <span class="fine-number">100%</span>
+          <p>Runs on your machine</p>
+        </div>
+        <div>
+          <span class="fine-number">0</span>
+          <p>Files uploaded</p>
+        </div>
+        <p class="caveat">
+          A note for unusual PDFs: encrypted files, digital signatures, interactive forms,
+          and document-level bookmarks may not survive a merge unchanged.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span>Made for the files that should stay yours.</span>
+      <a href="https://github.com/PilHliP211/pdf-merger">View source</a>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
